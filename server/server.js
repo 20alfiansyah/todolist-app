@@ -58,6 +58,7 @@ app.post('/api',(req,res)=>{
     time: clock(),
     status: status
   }
+  console.log(newData)
   activities.push(newData);
   res.send("success")
 })
@@ -73,11 +74,13 @@ app.patch('/api', (req,res)=>{
   if (!req.body) {
     return res.status(400).json({ error: 'Missing request body' });
   }
+  
   searchData.status = newData.status;
 
   // Your other logic here
 
   res.json({ message: 'Data updated successfully' });
+  console.log(newData)
 })
 
 app.get('/api/edit',(req,res)=>{

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark,faPlus } from '@fortawesome/free-solid-svg-icons'
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useFormik } from 'formik';
 import  * as yup from 'yup';
 const CreateModal = ({handleModal, handleNotify}) =>{
@@ -35,25 +35,24 @@ const CreateModal = ({handleModal, handleNotify}) =>{
     const formik = useFormik({
         initialValues:{
             todo: "",
-            status : true
+            status : true,
         },
         onSubmit: handleSubmit,
         validationSchema: yup.object().shape({
             todo: yup.string().required().min(3),
-            status: yup.string()
+            status: yup.boolean()
         })
     })
 
     const handleForm = (e) => {
         const { target } = e
-        formik.setFieldValue(target.name, target.value)
-        console.log(target.name, target.value)
+        formik.setFieldValue(target.name, target.value == 'false' ? false : target.value)
     }
     return (
-        <>
-            <motion.div  className="w-full h-full absolute bg-black bg-opacity-35 flex flex-col justify-center items-center gap-2 ">
+        <AnimatePresence>
+            <motion.div  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}  className="w-full h-full absolute bg-black bg-opacity-35 flex flex-col justify-center items-center gap-2 ">
                 <div className="w-10/12 lg:w-2/5 flex justify-end">
-                    <motion.button onClick={()=>handleModal()} whileTap={{ scale: 0.85 }}> <FontAwesomeIcon icon={faXmark} className='p-3 rounded-lg scale-x-110 bg-white'/></motion.button> 
+                    <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={()=>handleModal('Exit')} whileTap={{ scale: 0.85 }}> <FontAwesomeIcon icon={faXmark} className='p-3 rounded-lg scale-x-110 bg-white'/></motion.button> 
                 </div>
                 <div className="w-10/12 lg:w-2/5 px-5 py-7 bg-white rounded-lg flex flex-col gap-2">
                     <div>
@@ -76,7 +75,7 @@ const CreateModal = ({handleModal, handleNotify}) =>{
                     </div>
                 </div>
             </motion.div>
-        </>
+        </AnimatePresence>
     )
 }
 export default CreateModal
