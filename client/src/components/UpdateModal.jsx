@@ -7,7 +7,7 @@ const UpdateModal = ({handleModal,setTodoData,handleNotify}) =>{
     const handleSubmit = async(values) => {
         try {
             // Send form data to your server
-            const response = await fetch('https://todolist-pq26hwzgx-20alfiansyahs-projects.vercel.app/api/edit', {
+            const response = await fetch('https://todolist-app-black-five.vercel.app/api/edit', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
