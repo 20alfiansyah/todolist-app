@@ -37,7 +37,7 @@ const Home = ({handleModal,handleNewChange,handleEditData}) => {
 
     const fetchActivity = async () =>{
         try {
-            fetch('http://localhost:5000/api')
+            fetch('https://todolist-pq26hwzgx-20alfiansyahs-projects.vercel.app/api')
             .then(res => res.json())
             .then(data => settodoData(data))
         } catch (error) {
@@ -48,7 +48,7 @@ const Home = ({handleModal,handleNewChange,handleEditData}) => {
 
     const handlePatchRequest = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api', {
+            const response = await fetch('https://todolist-pq26hwzgx-20alfiansyahs-projects.vercel.app/api', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ const Home = ({handleModal,handleNewChange,handleEditData}) => {
 
     const handleDeleteRequest = async() => {
         try {
-            const response = await fetch('http://localhost:5000/api',{
+            const response = await fetch('https://todolist-pq26hwzgx-20alfiansyahs-projects.vercel.app/api',{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

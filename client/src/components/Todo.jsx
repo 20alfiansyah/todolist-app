@@ -1,6 +1,6 @@
 import Activity from "./Activity"
 import Greetings from "./Greetings"
-const Todo = ({todoData,statusData,dataChange,dataDelete,handleModal}) =>{
+const Todo = ({todoData,statusData,dataChange,dataDelete}) =>{
     let searchData = null
     if(statusData == "All" && todoData.length!=0){
         return(

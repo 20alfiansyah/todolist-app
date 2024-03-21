@@ -7,7 +7,7 @@ const CreateModal = ({handleModal, handleNotify}) =>{
     const handleSubmit = async(values) => {
         try {
             // Send form data to your server
-            const response = await fetch('http://localhost:5000/api', {
+            const response = await fetch('https://todolist-pq26hwzgx-20alfiansyahs-projects.vercel.app/api', {
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json'
