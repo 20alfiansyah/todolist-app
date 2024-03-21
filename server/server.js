@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const port = process.env.PORT || 8080
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.json());
@@ -100,6 +101,6 @@ app.patch('/api/edit',(req, res) => {
     return res.status(400).json({ error: 'Missing request body' });
   }
 })
-app.listen(5000, ()=>{
-    console.log('Server is running on port http://localhost:5000');
+app.listen(port, ()=>{
+    console.log(`Server is running on port http://localhost:${port}`);
 })
