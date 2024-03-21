@@ -17,6 +17,9 @@ let options = {timeZone: 'Asia/Jakarta', timeZoneName: 'short'};
 return(jakartaTime = date.toLocaleString('en-US', options))
 }
 
+app.use(cors({
+  origin: 'https://todolist-app-client.vercel.app/' // Replace this with your frontend's domain
+}));
 
 let activities = [
     {
