@@ -21,24 +21,6 @@ app.use(cors({
 }));
 
 let activities = [
-    {
-        id : 1,
-        todo: "Buat Sarapan",
-        time: clock(),
-        status: true
-    },
-    {
-        id : 2,
-      todo: "Buat Tugas",
-      time: clock(),
-      status: true
-    },
-    {
-        id : 3,
-        todo: "Buat Apa Aja",
-        time: clock(),
-        status: true
-    },
 ]
 app.get('/api',(req,res)=>{
     res.json(activities);
